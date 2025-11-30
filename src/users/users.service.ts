@@ -16,7 +16,7 @@ export class UsersService {
     const user = this.users.find((item) => item.id === id);
 
     if (!isObject(user)) {
-      throw new NotFoundException();
+      throw new NotFoundException('User does not exist');
     }
 
     return user;
