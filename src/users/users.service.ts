@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { isObject } from '@nestjs/common/utils/shared.utils';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -22,11 +23,13 @@ export class UsersService {
     return user;
   }
 
-  create() {
+  create(dto: CreateUserDto) {
+    const { name, age } = dto;
+
     const newUser = {
       id: this.users.length + 1,
-      name: `user-${this.users.length + 1}`,
-      age: Math.floor(Math.random() * 100) + 1,
+      name,
+      age,
     };
 
     this.users.push(newUser);
