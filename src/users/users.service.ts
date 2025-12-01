@@ -21,4 +21,16 @@ export class UsersService {
 
     return user;
   }
+
+  create() {
+    const newUser = {
+      id: this.users.length + 1,
+      name: `user-${this.users.length + 1}`,
+      age: Math.floor(Math.random() * 100) + 1,
+    };
+
+    this.users.push(newUser);
+
+    return this.users;
+  }
 }
