@@ -55,4 +55,11 @@ export class UsersService {
 
     return user;
   }
+
+  delete(id: number) {
+    const user = this.findById(id);
+    this.users = this.users.filter((item) => item.id !== user.id);
+
+    return user;
+  }
 }
