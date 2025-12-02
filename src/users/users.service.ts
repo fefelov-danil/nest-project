@@ -48,4 +48,11 @@ export class UsersService {
 
     return user;
   }
+
+  pathUpdate(id: number, dto: Partial<UpdateUserDto>) {
+    const user = this.findById(id);
+    Object.assign(user, dto);
+
+    return user;
+  }
 }
