@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsNumber, IsString, Length } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Length,
+} from 'class-validator';
 
 export class UpdateUserDto {
   @IsString({ message: 'Имя должно быть строкой' })
@@ -8,4 +14,8 @@ export class UpdateUserDto {
 
   @IsNumber()
   age: number;
+
+  @IsString()
+  @IsOptional()
+  description: string;
 }

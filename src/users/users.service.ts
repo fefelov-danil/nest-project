@@ -7,7 +7,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UsersService {
   private users = [
     { id: 1, name: 'Danil', age: 34 },
-    { id: 2, name: 'Anastasiya', age: 32 },
+    { id: 2, name: 'Anastasiya', age: 32, description: 'Test description' },
   ];
 
   findAll() {
@@ -25,12 +25,13 @@ export class UsersService {
   }
 
   create(dto: CreateUserDto) {
-    const { name, age } = dto;
+    const { name, age, description } = dto;
 
     const newUser = {
       id: this.users.length + 1,
       name,
       age,
+      description,
     };
 
     this.users.push(newUser);
@@ -39,12 +40,13 @@ export class UsersService {
   }
 
   update(id: number, dto: UpdateUserDto) {
-    const { name, age } = dto;
+    const { name, age, description } = dto;
 
     const user = this.findById(id);
 
     user.name = name;
     user.age = age;
+    user.description = description;
 
     return user;
   }
