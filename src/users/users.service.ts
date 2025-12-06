@@ -5,8 +5,14 @@ import { UserDto } from './dto/user.dto';
 @Injectable()
 export class UsersService {
   private users = [
-    { id: 1, name: 'Danil', age: 34 },
-    { id: 2, name: 'Anastasiya', age: 32, description: 'Test description' },
+    { id: 1, name: 'Danil', age: 34, order: 1 },
+    {
+      id: 2,
+      name: 'Anastasiya',
+      age: 32,
+      order: 2,
+      description: 'Test description',
+    },
   ];
 
   findAll() {
@@ -24,13 +30,14 @@ export class UsersService {
   }
 
   create(dto: UserDto) {
-    const { name, age, description } = dto;
+    const { name, age, description, order } = dto;
 
     const newUser = {
       id: this.users.length + 1,
       name,
       age,
       description,
+      order,
     };
 
     this.users.push(newUser);
@@ -39,13 +46,14 @@ export class UsersService {
   }
 
   update(id: number, dto: UserDto) {
-    const { name, age, description } = dto;
+    const { name, age, description, order } = dto;
 
     const user = this.findById(id);
 
     user.name = name;
     user.age = age;
     user.description = description;
+    user.order = order;
 
     return user;
   }

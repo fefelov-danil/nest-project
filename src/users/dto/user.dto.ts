@@ -1,7 +1,9 @@
 import {
+  IsInt,
   IsNotEmpty,
   IsNumber,
   IsOptional,
+  IsPositive,
   IsString,
   Length,
 } from 'class-validator';
@@ -18,4 +20,8 @@ export class UserDto {
   @IsString()
   @IsOptional()
   description: string;
+
+  @IsInt({ message: 'Поле order должно быть целым числом' })
+  @IsPositive({ message: 'Поле order может быть только положительным' })
+  order: number;
 }
