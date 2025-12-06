@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { isObject } from '@nestjs/common/utils/shared.utils';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { UserDto } from './dto/user.dto';
 
 @Injectable()
 export class UsersService {
@@ -24,7 +23,7 @@ export class UsersService {
     return user;
   }
 
-  create(dto: CreateUserDto) {
+  create(dto: UserDto) {
     const { name, age, description } = dto;
 
     const newUser = {
@@ -39,7 +38,7 @@ export class UsersService {
     return this.users;
   }
 
-  update(id: number, dto: UpdateUserDto) {
+  update(id: number, dto: UserDto) {
     const { name, age, description } = dto;
 
     const user = this.findById(id);
@@ -51,7 +50,7 @@ export class UsersService {
     return user;
   }
 
-  pathUpdate(id: number, dto: Partial<UpdateUserDto>) {
+  pathUpdate(id: number, dto: Partial<UserDto>) {
     const user = this.findById(id);
     Object.assign(user, dto);
 
