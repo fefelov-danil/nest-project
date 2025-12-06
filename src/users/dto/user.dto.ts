@@ -1,4 +1,5 @@
 import {
+  IsArray,
   IsInt,
   IsNotEmpty,
   IsNumber,
@@ -24,4 +25,8 @@ export class UserDto {
   @IsInt({ message: 'Поле order должно быть целым числом' })
   @IsPositive({ message: 'Поле order может быть только положительным' })
   order: number;
+
+  @IsArray({ message: 'Теги должны быть массивом' })
+  @IsOptional()
+  tags: string[];
 }

@@ -12,6 +12,7 @@ export class UsersService {
       age: 32,
       order: 2,
       description: 'Test description',
+      tags: ['tag 1', 'tag 2'],
     },
   ];
 
@@ -30,7 +31,7 @@ export class UsersService {
   }
 
   create(dto: UserDto) {
-    const { name, age, description, order } = dto;
+    const { name, age, description, order, tags } = dto;
 
     const newUser = {
       id: this.users.length + 1,
@@ -38,6 +39,7 @@ export class UsersService {
       age,
       description,
       order,
+      tags,
     };
 
     this.users.push(newUser);
@@ -46,7 +48,7 @@ export class UsersService {
   }
 
   update(id: number, dto: UserDto) {
-    const { name, age, description, order } = dto;
+    const { name, age, description, order, tags } = dto;
 
     const user = this.findById(id);
 
@@ -54,6 +56,7 @@ export class UsersService {
     user.age = age;
     user.description = description;
     user.order = order;
+    user.tags = tags;
 
     return user;
   }
