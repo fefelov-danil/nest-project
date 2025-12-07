@@ -9,6 +9,7 @@ import {
   IsString,
   Length,
 } from 'class-validator';
+import { StartWidth } from '../decorators/start-width.decorator';
 
 export enum UserTagsEnum {
   MAN = 'man',
@@ -26,6 +27,7 @@ export class UserDto {
 
   @IsString()
   @IsOptional()
+  @StartWidth('Description')
   description: string;
 
   @IsInt({ message: 'Поле order должно быть целым числом' })
