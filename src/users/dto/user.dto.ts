@@ -1,5 +1,6 @@
 import {
   IsArray,
+  IsEnum,
   IsInt,
   IsNotEmpty,
   IsNumber,
@@ -8,6 +9,11 @@ import {
   IsString,
   Length,
 } from 'class-validator';
+
+export enum UserTagsEnum {
+  MAN = 'man',
+  WOMAN = 'women',
+}
 
 export class UserDto {
   @IsString({ message: 'Имя должно быть строкой' })
@@ -27,6 +33,7 @@ export class UserDto {
   order: number;
 
   @IsArray({ message: 'Теги должны быть массивом' })
+  @IsEnum(UserTagsEnum, { each: true, message: 'Недопустимое значение тегов' })
   @IsOptional()
   tags: string[];
 }

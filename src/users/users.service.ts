@@ -12,7 +12,7 @@ export class UsersService {
       age: 32,
       order: 2,
       description: 'Test description',
-      tags: ['tag 1', 'tag 2'],
+      tags: ['women'],
     },
   ];
 
