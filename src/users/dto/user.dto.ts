@@ -27,7 +27,9 @@ export class UserDto {
 
   @IsString()
   @IsOptional()
-  @StartWidth('Description')
+  @StartWidth('Description', {
+    message: 'Описание должно начинатся с Description',
+  })
   description: string;
 
   @IsInt({ message: 'Поле order должно быть целым числом' })
